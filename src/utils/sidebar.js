@@ -75,7 +75,7 @@ export const addSidebarItem = function ({ id, title, rows, visibility }) {
 };
 
 export const removeSidebarItem = id => {
-  const sidebarItem = sidebarItems.querySelector(`#${id}`);
+  const sidebarItem = sidebarItems.querySelector(`#${CSS.escape(id)}`);
   if (sidebarItem === null) return;
 
   conditions.delete(sidebarItem);
