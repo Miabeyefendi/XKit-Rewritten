@@ -101,5 +101,8 @@ export const clean = async function () {
   pageModifications.unregister(checkForButtonRemoved);
   pageModifications.unregister(onLoadersAdded);
   stopScrolling();
+  document.documentElement.removeEventListener('keydown', onKeyDown);
+  document.querySelectorAll(`button[aria-label="${translate('Scroll to top')}"]`)
+    .forEach(button => button.removeEventListener('click', stopScrolling));
   scrollToBottomButton?.remove();
 };
