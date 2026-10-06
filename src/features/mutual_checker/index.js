@@ -62,7 +62,8 @@ const processNotifications = (notificationElements) => {
   notificationElements.forEach(async notificationElement => {
     const notification = await notificationObject(notificationElement);
 
-    if (notification?.mutuals || notification?.title?.relationshipLabel === 'mutuals') {
+    // if the notification data can't be read, show it rather than hiding it forever
+    if (notification === undefined || notification.mutuals || notification.title?.relationshipLabel === 'mutuals') {
       notificationElement.setAttribute('data-mutuals', '');
     }
   });
