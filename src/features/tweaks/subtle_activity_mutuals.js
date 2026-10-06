@@ -49,7 +49,7 @@ ${labelSelector} > svg {
 
 const processLabels = labels => labels.forEach(label => {
   const textNode = label.firstChild;
-  if (textNode.nodeName !== '#text') return;
+  if (textNode?.nodeName !== '#text') return;
 
   if (!label.querySelector('svg')) {
     const iconHref = label.matches(keyToCss('mutualsBadgeContainer'))
