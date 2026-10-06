@@ -45,8 +45,8 @@ const processPosts = postElements => filterPostElements(postElements).forEach(as
 
 export const main = async function () {
   ({ blockingMode, localBlogFlagging, localTagFlagging } = await getPreferences('cleanfeed'));
-  localFlaggedBlogs = localBlogFlagging.split(',').map(username => username.trim().toLowerCase());
-  localFlaggedTags = localTagFlagging.split(',').map(tag => tag.replaceAll('#', '').trim().toLowerCase());
+  localFlaggedBlogs = localBlogFlagging.split(',').map(username => username.trim().toLowerCase()).filter(Boolean);
+  localFlaggedTags = localTagFlagging.split(',').map(tag => tag.replaceAll('#', '').trim().toLowerCase()).filter(Boolean);
 
   const localFlaggedBlogsTitleSelector = `:is(${
     localFlaggedBlogs.map(username => `[title="${username}"]`).join(', ')
