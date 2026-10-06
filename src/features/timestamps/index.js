@@ -133,7 +133,7 @@ const addReblogTimestamps = async function () {
     }
 
     trail.forEach(async (trailItem, i) => {
-      if (trailItem.blog === undefined || trailItem.blog.active === false || !reblogHeaders[i]) {
+      if (trailItem.blog === undefined || trailItem.blog.active === false || !trailItem.post || !reblogHeaders[i]) {
         return;
       }
 
