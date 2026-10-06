@@ -1,3 +1,4 @@
+import { removeAttribute } from '../../utils/cleanup.js';
 import { dom } from '../../utils/dom.js';
 import { buildStyle } from '../../utils/interface.js';
 import { registerMeatballItem, unregisterMeatballItem } from '../../utils/meatballs.js';
@@ -117,6 +118,7 @@ export const main = async function () {
 
 export const clean = async function () {
   onNewNotifications.removeListener(processNotifications);
+  removeAttribute('data-target-root-post-id');
   unregisterMeatballItem(meatballButtonBlockId);
   unregisterMeatballItem(meatballButtonUnblockId);
 };

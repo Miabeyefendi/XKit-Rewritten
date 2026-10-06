@@ -1,4 +1,4 @@
-import { removeClassName, removeElementsByClassName } from '../../utils/cleanup.js';
+import { removeAttribute, removeClassName, removeElementsByClassName } from '../../utils/cleanup.js';
 import { keyToCss } from '../../utils/css_map.js';
 import { path, svg, title, use } from '../../utils/dom.js';
 import { buildStyle, getTimelineItemWrapper, filterPostElements, getPopoverWrapper, notificationSelector } from '../../utils/interface.js';
@@ -170,6 +170,7 @@ export const clean = async function () {
   if (showOnlyMutualNotifications) {
     onlyMutualsStyleElement.remove();
     onNewNotifications.removeListener(processNotifications);
+    removeAttribute('data-mutuals');
   }
   styleElement.remove();
 
