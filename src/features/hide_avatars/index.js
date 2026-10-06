@@ -9,6 +9,8 @@ export const main = async function () {
 
   styleElement.textContent = hiddenAvatars
     .split(',')
-    .map(blogname => `a:is([href="/${blogname.trim()}"], [title="${blogname.trim()}"]) img[alt="${translate('Avatar')}"] { filter: blur(64px); }`)
+    .map(blogname => blogname.trim())
+    .filter(Boolean)
+    .map(blogname => `a:is([href="/${blogname}"], [title="${blogname}"]) img[alt="${translate('Avatar')}"] { filter: blur(64px); }`)
     .join('\n');
 };
