@@ -156,7 +156,7 @@ export const main = async () => {
     patioEnable,
   } = await getPreferences('panorama');
 
-  document.documentElement.style.setProperty(maxPostWidthVar, maxPostWidth);
+  document.documentElement.style.setProperty(maxPostWidthVar, maxPostWidth === '100wv' ? '100vw' : maxPostWidth); // '100wv' was a previously saved typo
   document.documentElement.classList.toggle(expandMediaClass, expandPostMedia);
 
   document.documentElement.append(styleElement);

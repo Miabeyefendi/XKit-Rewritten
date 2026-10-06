@@ -30,7 +30,7 @@
         { "value": "1536px", "label": "1536px" },
         { "value": "1792px", "label": "1792px" },
         { "value": "2048px", "label": "2048px" },
-        { "value": "100wv", "label": "Unlimited" }
+        { "value": "100vw", "label": "Unlimited" }
       ],
       "default": "1280px"
     },
