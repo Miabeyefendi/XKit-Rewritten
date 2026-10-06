@@ -59,9 +59,9 @@ export const showErrorModal = exception => {
     title: 'Something went wrong.',
     message: [
       [
-        exception.body?.errors?.[0]?.detail,
-        exception.errors?.[0]?.detail,
-        exception.message,
+        exception?.body?.errors?.[0]?.detail,
+        exception?.errors?.[0]?.detail,
+        exception?.message,
         browser.runtime?.id === undefined && 'Please refresh this browser tab!',
       ]
         .filter(Boolean)
