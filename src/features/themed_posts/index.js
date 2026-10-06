@@ -111,7 +111,7 @@ const processPosts = async function (postElements) {
 
 export const main = async function () {
   ({ reblogTrailTheming, enableOnPeepr, blacklistedUsernames, missingPostMode } = await getPreferences('themed_posts'));
-  blacklist = blacklistedUsernames.split(',').map(username => username.trim());
+  blacklist = blacklistedUsernames.split(',').map(username => username.trim().replace(/^@/, '').toLowerCase()).filter(Boolean);
 
   if (reblogTrailTheming) {
     if (missingPostMode === 'palette') {
