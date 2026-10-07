@@ -316,6 +316,7 @@ const renderQuickTags = () => browser.storage.local.get(quickTagsStorageKey)
   .then(({ [quickTagsStorageKey]: tagBundles = [] }) =>
     quickTagsPanel.replaceChildren(
       ...tagBundles.map(tagBundle => button({
+        title: tagBundle.title,
         'aria-pressed': 'false',
         'data-tags': tagBundle.tags,
         click: onTagsButtonClick,
@@ -335,6 +336,7 @@ const renderTagSuggestions = ({ blogName, content, layout, postAuthor, reblogged
   suggestedTagsPanel.replaceChildren(
     ...[...suggestedTags].map(
       tag => button({
+        title: `#${tag}`,
         'aria-pressed': 'false',
         'data-tags': tag,
         click: onTagsButtonClick,
