@@ -4,7 +4,11 @@ import { addSidebarItem, removeSidebarItem } from '../../utils/sidebar.js';
 import { apiFetch } from '../../utils/tumblr_helpers.js';
 
 const dateTimeFormat = new Intl.DateTimeFormat(document.documentElement.lang, { dateStyle: 'short', timeStyle: 'short' });
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const withDelayedProgressUi = async (promise, delayedProgressUi, timeout = 200) => {
+  const timeoutId = setTimeout(delayedProgressUi, timeout);
+  return promise.finally(() => clearTimeout(timeoutId));
+};
 
 const tableHeadingsRow = dom('tr', null, null, [
   dom('th', { scope: 'col' }, null, ['Type']),
@@ -20,16 +24,15 @@ const buildLimitRow = ([type, { description, limit, remaining, resetAt }]) => do
   dom('td', null, null, [dateTimeFormat.format(new Date(resetAt * 1000))]),
 ]);
 
-const checkUserLimits = () => {
-  showModal({
+const checkUserLimits = () => withDelayedProgressUi(
+  apiFetch('/v2/user/limits'),
+  () => showModal({
     title: 'Limit Checker',
     message: ['Hold on while the data is fetched...'],
-  });
+  }),
+);
 
-  return Promise.all([apiFetch('/v2/user/limits'), sleep(1000)]);
-};
-
-const showUserLimits = ([{ response: { user } }]) => showModal({
+const showUserLimits = ({ response: { user } }) => showModal({
   title: 'Here is your data!',
   message: [dom('table', null, null, [tableHeadingsRow, ...Object.entries(user).map(buildLimitRow)])],
   buttons: [modalCompleteButton],
