@@ -36,5 +36,7 @@ export const main = async () => {
 export const clean = async () => {
   mobileMenuBadgeHide.unregister('home');
 
+  pageModifications.unregister(onTitleChanged);
+  observer.disconnect();
   customTitleElement.remove();
 };
