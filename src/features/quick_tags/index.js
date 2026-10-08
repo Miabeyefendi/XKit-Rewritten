@@ -58,7 +58,7 @@ const postOptionPopupElement = dom('fieldset', { id: 'quick-tags-post-option' })
 const storageKey = 'quick_tags.preferences.tagBundles';
 
 const createBundleButton = tagBundle => {
-  const bundleButton = dom('button', null, null, [tagBundle.title]);
+  const bundleButton = dom('button', { title: tagBundle.title }, null, [tagBundle.title]);
   bundleButton.dataset.tags = tagBundle.tags;
   return bundleButton;
 };
