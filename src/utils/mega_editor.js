@@ -11,7 +11,7 @@ const getFormKey = () => fetch('https://www.tumblr.com/neue_web/iframe/new/text'
 }).then(responseText => {
   const responseDocument = (new DOMParser()).parseFromString(responseText, 'text/html');
   return responseDocument.getElementById('tumblr_form_key').getAttribute('content');
-}).catch(console.error);
+});
 
 const pathnames = {
   add: 'add_tags_to_posts',
