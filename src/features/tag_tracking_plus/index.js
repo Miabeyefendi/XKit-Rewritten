@@ -58,11 +58,13 @@ const refreshCount = async function (tag) {
     console.error(exception);
   }
 
-  const unreadCountElement = sidebarItem.querySelector(`[data-count-for="#${tag}"]`);
+  const unreadCountElement = sidebarItem?.querySelector(`[data-count-for="#${tag}"]`);
 
-  unreadCountElement.textContent = unreadCountString;
-  if (unreadCountElement.closest('li')) {
-    unreadCountElement.closest('li').dataset.new = unreadCountString !== '0';
+  if (unreadCountElement) {
+    unreadCountElement.textContent = unreadCountString;
+    if (unreadCountElement.closest('li')) {
+      unreadCountElement.closest('li').dataset.new = unreadCountString !== '0';
+    }
   }
 
   unreadCounts.set(tag, unreadCountString);
