@@ -15,7 +15,7 @@ const onClickBlogViewLink = event => {
   event.stopPropagation();
   event.preventDefault();
 
-  const { pathname } = new URL(event.target.href);
+  const { pathname } = new URL(event.currentTarget.href);
   const [blogName, postId] = pathname.split('/').slice(3);
 
   window.open(`https://${blogName}.tumblr.com/${postId ? `post/${postId}` : ''}`);
