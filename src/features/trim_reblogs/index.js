@@ -59,9 +59,9 @@ const onButtonClicked = async function ({ currentTarget: controlButton }) {
       showModal({
         title: '⚠️ This thread contains an ask!',
         message: [
-          `Trimming an ask from a thread will result in it appearing broken on custom themes (i.e. ${blog?.name}.tumblr.com).`,
+          `Trimming an ask from a thread may result in it appearing broken on some custom themes (i.e. ${blog?.name}.tumblr.com).`,
           '\n\n',
-          'To avoid issues with custom themes, leave the ask intact when trimming.',
+          'To completely avoid issues with custom themes, leave the ask intact when trimming.',
         ],
         buttons: [
           modalCancelButton,
