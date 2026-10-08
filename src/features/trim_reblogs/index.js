@@ -73,7 +73,7 @@ const onButtonClicked = async function ({ currentTarget: controlButton }) {
 
   const createPreviewItem = ({ blog, brokenBlog, content, disableCheckbox = false }) => {
     const { avatar, name } = blog ?? brokenBlog ?? blogPlaceholder;
-    const { url: src } = avatar.at(-1);
+    const { url: src } = avatar?.at(-1) ?? blogPlaceholder.avatar[0];
     const textContent = content.map(({ text }) => text).find(Boolean) ?? '\u22EF';
 
     const checkbox = dom('input', { type: 'checkbox' });
@@ -129,7 +129,7 @@ const onButtonClicked = async function ({ currentTarget: controlButton }) {
       const reblogs = [...postElement.querySelectorAll(reblogSelector)];
       excludeTrailItems
         .map(i => reblogs[i])
-        .forEach(reblog => reblog.remove());
+        .forEach(reblog => reblog?.remove());
     } catch (exception) {
       showErrorModal(exception);
     }
