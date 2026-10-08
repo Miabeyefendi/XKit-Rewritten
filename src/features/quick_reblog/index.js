@@ -145,8 +145,9 @@ function onTextFieldKeyDown (event) {
 
 /** @param {InputEvent} event tagsInput input event object */
 function onTagsInput ({ currentTarget }) {
-  // Do smart quotes
+  // Remove leading hash characters, then do smart quotes
   currentTarget.value = currentTarget.value
+    .replace(/(^|,)(\s*)#+/g, '$1$2')
     .replace(/^"/, '\u201C')
     .replace(/ "/g, ' \u201C')
     .replace(/"/g, '\u201D');

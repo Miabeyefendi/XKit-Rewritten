@@ -35,6 +35,7 @@ const popupInput = dom(
 const doSmartQuotes = ({ currentTarget }) => {
   const { value } = currentTarget;
   currentTarget.value = value
+    .replace(/(^|,)(\s*)#+/g, '$1$2')
     .replace(/^"/, '\u201C')
     .replace(/ "/g, ' \u201C')
     .replace(/"/g, '\u201D');
