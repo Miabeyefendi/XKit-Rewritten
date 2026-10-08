@@ -5,8 +5,6 @@ import { addSidebarItem, removeSidebarItem } from '../../utils/sidebar.js';
 import { dateTimeFormat } from '../../utils/text_format.js';
 import { apiFetch } from '../../utils/tumblr_helpers.js';
 
-const timezoneOffsetMs = new Date().getTimezoneOffset() * 60000;
-
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const createNowString = () => {
   const now = new Date();
@@ -40,7 +38,7 @@ const confirmDeleteDrafts = event => {
 
   const blogName = location.pathname.split('/')[2];
   const { elements } = event.currentTarget;
-  const beforeMs = elements.before.valueAsNumber + timezoneOffsetMs;
+  const beforeMs = new Date(elements.before.value).getTime();
 
   const beforeString = dateTimeFormat.format(new Date(beforeMs));
   const beforeElement = span({ style: 'white-space: nowrap; font-weight: bold;' }, [beforeString]);
