@@ -11,8 +11,6 @@ const getPostsFormId = 'xkit-mass-privater-get-posts';
 const createBlogOption = ({ name, title, uuid }) => dom('option', { value: uuid, title }, null, [name]);
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const timezoneOffsetMs = new Date().getTimezoneOffset() * 60000;
-
 const createNowString = () => {
   const now = new Date();
 
@@ -90,7 +88,7 @@ const confirmInitialPrompt = async event => {
     }
   }
 
-  const beforeMs = elements.before.valueAsNumber + timezoneOffsetMs;
+  const beforeMs = new Date(elements.before.value).getTime();
 
   const beforeString = dateTimeFormat.format(new Date(beforeMs));
   const beforeElement = dom('span', { style: 'white-space: nowrap; font-weight: bold;' }, null, [beforeString]);
