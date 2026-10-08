@@ -375,6 +375,15 @@ footer:is(.published, .queue, .draft) :is(a, button):has(use[href="#managed-icon
   font-size: 11px;
 }
 
+/* Match Tumblr's fading of disabled reblog buttons (it targets the svg, not the button) */
+footer:is(.published, .queue, .draft) :is(a, button)[aria-disabled="true"]:has(use:is(
+  [href="#managed-icon__reblog"],
+  [href="#managed-icon__ds-reblog-20"],
+  [href="#managed-icon__ds-reblog-24"]
+))::after {
+  opacity: 0.5;
+}
+
 /* === XKit 7 override === */
 
 #x1cpostage_box {
