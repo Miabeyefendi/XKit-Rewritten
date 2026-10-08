@@ -63,6 +63,7 @@ export const showErrorModal = exception => {
         exception?.errors?.[0]?.detail,
         exception?.message,
         browser.runtime?.id === undefined && 'Please refresh this browser tab!',
+        'This text is diagnostic information, not a link to follow. Please include it if you report this problem.',
       ]
         .filter(Boolean)
         .join('\n\n'),
