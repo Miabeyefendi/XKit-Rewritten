@@ -41,7 +41,7 @@ export const createEditRequestBody = postData => {
     communityLabels: {
       hasCommunityLabel,
       categories: communityLabelCategories,
-    },
+    } = {},
   } = postData;
 
   return {
