@@ -47,6 +47,9 @@ const checkLength = ({ currentTarget }) => {
   if (tags.some(tag => tag.length > 140)) {
     popupInput.setCustomValidity('Tag is longer than 140 characters!');
     popupInput.reportValidity();
+  } else if (tags.filter(Boolean).length > 30) {
+    popupInput.setCustomValidity('Posts can have at most 30 tags!');
+    popupInput.reportValidity();
   } else {
     popupInput.setCustomValidity('');
   }

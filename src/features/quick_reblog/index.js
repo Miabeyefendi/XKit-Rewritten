@@ -157,6 +157,9 @@ function onTagsInput ({ currentTarget }) {
   if (tags.some(tag => tag.length > 140)) {
     tagsInput.setCustomValidity('Tag is longer than 140 characters!');
     tagsInput.reportValidity();
+  } else if (tags.filter(Boolean).length > 30) {
+    tagsInput.setCustomValidity('Posts can have at most 30 tags!');
+    tagsInput.reportValidity();
   } else {
     tagsInput.setCustomValidity('');
   }
